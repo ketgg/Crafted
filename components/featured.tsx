@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 
 import { useReadContract } from "wagmi"
-import { base } from "wagmi/chains"
+import { base, baseSepolia } from "wagmi/chains"
 
 import { Avatar } from "@coinbase/onchainkit/identity"
 
@@ -48,8 +48,10 @@ const FeaturedCard = ({
     abi: ABI,
     address: ADDRESS,
     functionName: "tokenURI",
-    args: [BigInt(tokenId)],
+    args: [tokenId],
+    chainId: baseSepolia.id,
   })
+
   useEffect(() => {
     const getFileURL = async () => {
       if (tokenURIData) {
@@ -62,7 +64,6 @@ const FeaturedCard = ({
           if (jsonMetaData.name) {
             const name = jsonMetaData.name
             setNftName(name)
-            // localStorage.setItem(`FeaturedNFTItem#${tokenId}#Name`, name)
           }
           // Check and update the fileURL if imgUrl exists and starts with ipfs://
           if (jsonMetaData.image && jsonMetaData.image.startsWith("ipfs://")) {
@@ -70,8 +71,6 @@ const FeaturedCard = ({
             const pubURL = `https://${gatewayURL}/ipfs/${ipfsHash}`
             // Set the file URL state
             setFileURL(pubURL)
-            // localStorage.setItem(`FeaturedNFTItem#${tokenId}#FileURL`, pubURL)
-            // console.log("File URI:", pubURL)
           }
         } catch (error) {
           console.error("Error fetching file URI: ", error)
@@ -105,11 +104,12 @@ const FeaturedCard = ({
     address: ADDRESS,
     functionName: "tokenIdToMarketItem",
     args: [tokenId],
+    chainId: baseSepolia.id,
   })
   useEffect(() => {
     const getNftData = async () => {
       if (nftItemData) {
-        console.log(nftItemData)
+        // console.log(nftItemData)
         const nftItem: MarketItem = {
           tokenId: nftItemData[0],
           creator: nftItemData[1],
@@ -119,17 +119,6 @@ const FeaturedCard = ({
           isListed: nftItemData[5],
         }
         setNftItem(nftItem)
-        // const nftItemForStorage = {
-        //   ...nftItem,
-        //   // JSON.stringify cannot handle BigInt values, which are not supported in JSON
-        //   tokenId: nftItem.tokenId.toString(),
-        //   price: nftItem.price.toString(),
-        // }
-
-        // localStorage.setItem(
-        //   `FeaturedNFTItem#${tokenId}`,
-        //   JSON.stringify(nftItemForStorage)
-        // )
       }
     }
     getNftData()

@@ -5,6 +5,7 @@ import Link from "next/link"
 import React, { useState, useEffect } from "react"
 
 import { useAccount, useReadContract } from "wagmi"
+import { baseSepolia } from "wagmi/chains"
 
 import { ABI, ADDRESS } from "@/contract"
 
@@ -27,6 +28,7 @@ const Explore = () => {
       account: accountAddress,
       functionName: "getAllListedNFTs",
       args: [],
+      chainId: baseSepolia.id,
     })
   useEffect(() => {
     if (listedNFTsData) {
@@ -79,9 +81,9 @@ const Explore = () => {
                     height="24px"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="mb-[0.5px]"
                   >
                     <line x1="7" y1="17" x2="17" y2="7"></line>

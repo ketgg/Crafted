@@ -83,7 +83,7 @@ const Profile = () => {
     account: accountAddress,
     functionName: "getNFTsOwnedByUser",
     args: [],
-    query: { enabled: true },
+    // chainId: baseSepolia.id,
   })
   useEffect(() => {
     if (ownedNFTsData) {

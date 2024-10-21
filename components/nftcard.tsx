@@ -62,6 +62,7 @@ const NFTCard = ({
     address: ADDRESS,
     functionName: "tokenURI",
     args: [BigInt(tokenId)],
+    chainId: baseSepolia.id,
   })
   useEffect(() => {
     const getFileURL = async () => {
@@ -142,6 +143,8 @@ const NFTCard = ({
                   src={fileURL}
                   fill={true}
                   className="object-cover"
+                  sizes="600"
+                  priority={true}
                 />
               ) : (
                 <Skeleton className="absolute top-0 left-0 flex flex-col w-full h-full" />

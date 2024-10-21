@@ -241,9 +241,9 @@ const Mint = () => {
                     <path
                       fill="none"
                       stroke="#fff"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M3 22.05V11A4 4 0 0 1 7 7H25a4 4 0 0 1 4 4V22.05M26 28.9s-10.67 2.27-9.6-14.76"
                     ></path>
                     <line
@@ -253,9 +253,9 @@ const Mint = () => {
                       y2="13"
                       fill="none"
                       stroke="#fff"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                     ></line>
                     <line
                       x1="21.73"
@@ -264,9 +264,9 @@ const Mint = () => {
                       y2="13"
                       fill="none"
                       stroke="#fff"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                     ></line>
                   </svg>
                   <div className="flex flex-col items-center justify-center">
@@ -454,9 +454,9 @@ const Mint = () => {
                   height="24px"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="mb-[0.5px]"
                 >
                   <line x1="7" y1="17" x2="17" y2="7"></line>

@@ -69,6 +69,7 @@ const NftItemPage = ({ params }: NftItemPageProps) => {
     account: accountAddress,
     functionName: "tokenCount",
     args: [],
+    chainId: baseSepolia.id,
   })
   useEffect(() => {
     if (tokenCountData) {
@@ -93,6 +94,7 @@ const NftItemPage = ({ params }: NftItemPageProps) => {
     account: accountAddress,
     functionName: "tokenIdToMarketItem",
     args: [tokenId],
+    chainId: baseSepolia.id,
     query: {
       enabled:
         isTokenIdValid &&
@@ -103,7 +105,7 @@ const NftItemPage = ({ params }: NftItemPageProps) => {
   })
   useEffect(() => {
     if (nftItemData) {
-      console.log(nftItemData)
+      // console.log(nftItemData)
       const nftItem: MarketItem = {
         tokenId: nftItemData[0],
         creator: nftItemData[1],
@@ -122,6 +124,7 @@ const NftItemPage = ({ params }: NftItemPageProps) => {
     address: ADDRESS,
     functionName: "tokenURI",
     args: [BigInt(tokenId)],
+    chainId: baseSepolia.id,
   })
   useEffect(() => {
     const getFileURL = async () => {
@@ -244,12 +247,18 @@ const NftItemPage = ({ params }: NftItemPageProps) => {
               </Link>
             </header>
             <div className="relative w-full aspect-square">
-              <Image
-                alt={`${nftName}#${nftItem?.tokenId}`}
-                src={fileURL}
-                fill={true}
-                className="object-contain object-center"
-              />
+              {fileURL ? (
+                <Image
+                  alt={`${nftName}#${nftItem?.tokenId}`}
+                  src={fileURL}
+                  fill={true}
+                  className="object-contain object-center"
+                  sizes="600"
+                  priority={true}
+                />
+              ) : (
+                <Skeleton className="w-full h-full" />
+              )}
             </div>
           </article>
         </div>
@@ -377,7 +386,14 @@ const NftItemPage = ({ params }: NftItemPageProps) => {
                 Description
               </h4>
             </div>
-            <div className="p-6">{nftDesc}</div>
+
+            <div className="p-6">
+              {nftDesc ? (
+                <div>{nftDesc}</div>
+              ) : (
+                <Skeleton className="w-full h-6" />
+              )}
+            </div>
           </div>
           <div className="flex flex-col gap-1 w-full p-5 rounded-radii-sm border border-white/[0.08] overflow-hidden mb-4">
             <div className="text-sm font-semibold text-foreground-muted-dark">
@@ -424,9 +440,9 @@ const NftItemPage = ({ params }: NftItemPageProps) => {
                     height="24px"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="mb-[0.5px]"
                   >
                     <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -470,9 +486,9 @@ const NftItemPage = ({ params }: NftItemPageProps) => {
                   height="24px"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="mb-[0.5px]"
                 >
                   <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -509,9 +525,9 @@ const NftItemPage = ({ params }: NftItemPageProps) => {
                   height="24px"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="mb-[0.5px]"
                 >
                   <line x1="7" y1="17" x2="17" y2="7"></line>
