@@ -1,1 +1,5 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-wagmi`](https://github.com/wevm/wagmi/tree/main/packages/create-wagmi).
+## Crafted
+
+Empowering Artists to Sell Their Digital Artwork Effortlessly.
+
+**_Try it out - https://crafted.ketto.space_**
