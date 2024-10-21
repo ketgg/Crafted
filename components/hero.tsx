@@ -14,11 +14,13 @@ import { base } from "viem/chains"
 import Backdrop from "@/components/backdrop"
 import FeaturedCard from "@/components/featured"
 
+import { ABI, ADDRESS } from "@/contract"
+
 import { MarketItem } from "@/lib/types"
 
 import { featuredTokenIds } from "@/data/featured"
-import IdentityWrapper from "./identity"
-import { Skeleton } from "./skeleton"
+
+import { Skeleton } from "@/components/skeleton"
 
 const Hero = () => {
   const router = useRouter()
@@ -44,7 +46,7 @@ const Hero = () => {
   }
 
   const redirectToTokenPage = () => {
-    router.push(`/assets/ethereum/${selectedCard.toString()}`)
+    router.push(`/eth/asset/${ADDRESS}/${selectedCard}`)
   }
 
   return (
